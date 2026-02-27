@@ -176,10 +176,22 @@ tbody tr:hover {
     text-align: left !important;
     font-weight: 500;
     background: var(--white);
+    max-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.matrix th {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .result-cell {
     font-size: 0.8rem;
+    white-space: nowrap;
 }
 
 .win {
