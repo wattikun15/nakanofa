@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nakanofa - リーグ順位表</title>
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --light-blue: #e8f0fe;
+            --border-color: #dadce0;
+            --text-main: #202124;
+            --bg-body: #f8f9fa;
+            --white: #ffffff;
+            --win-color: #d1e7dd;
+            --draw-color: #fff3cd;
+            --loss-color: #f8d7da;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border-color);
+            padding: 12px 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* 順位表のスタイル */
+        .standings-table tbody tr:hover {
+            background-color: var(--light-blue);
+            transition: background-color 0.2s ease;
+        }
+
+        .standings-table tbody tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        /* 対戦表のスタイル */
+        .matchup-table th:first-child,
+        .matchup-table .team-header {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .matchup-table td {
+            min-width: 60px;
+        }
+
+        .cell-blank {
+            background-color: #f1f3f4;
+            color: #9aa0a6;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            th,
+            td {
+                padding: 8px 4px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 100%; max-width: 1000px; margin: 20px auto 0 auto; padding: 0 20px;">
+        <a href="index.html"
+            style="text-decoration: none; color: var(--text-secondary); display: inline-flex; align-items: center; gap: 5px; font-weight: 500; transition: color 0.2s;">
+            <span>←</span> ホームに戻る
+        </a>
+    </div>
+
+    <h1
+        style="text-align: center; color: var(--primary-blue); margin-top: 20px; font-family: 'Outfit', sans-serif; letter-spacing: 2px;">
+        中野区リーグ 2025年度</h1>
+
+    <div class="container">
+        <h2>リーグ順位表</h2>
+        <div style="overflow-x: auto;">
+            <table class="standings-table">
+                <thead>
+                    <tr>
+                        <th>順位</th>
+                        <th>チーム名</th>
+                        <th>試合</th>
+                        <th>勝</th>
+                        <th>分</th>
+                        <th>負</th>
+                        <th>勝点</th>
+                        <th>得点</th>
+                        <th>失点</th>
+                        <th>得失点差</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>ALLROUNDER F.C.</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td><strong>12</strong></td>
+                        <td>13</td>
+                        <td>8</td>
+                        <td>+5</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>ミナミダイFC</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td><strong>10</strong></td>
+                        <td>21</td>
+                        <td>1</td>
+                        <td>+20</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>VAMOS</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td><strong>7</strong></td>
+                        <td>12</td>
+                        <td>7</td>
+                        <td>+5</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>PW3</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td><strong>6</strong></td>
+                        <td>18</td>
+                        <td>11</td>
+                        <td>+7</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>GA</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td><strong>6</strong></td>
+                        <td>6</td>
+                        <td>4</td>
+                        <td>+2</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Ligare Nakano Football Club</td>
+                        <td>4</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>3</td>
+                        <td><strong>3</strong></td>
+                        <td>6</td>
+                        <td>12</td>
+                        <td>-6</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Nakano City FC</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td><strong>3</strong></td>
+                        <td>9</td>
+                        <td>20</td>
+                        <td>-11</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>フジシール</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>4</td>
+                        <td><strong>0</strong></td>
+                        <td>1</td>
+                        <td>23</td>
+                        <td>-22</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>対戦表（マトリックス）</h2>
+        <div style="overflow-x: auto;">
+            <table class="matchup-table">
+                <thead>
+                    <tr>
+                        <th class="team-header"></th>
+                        <th>PW3</th>
+                        <th>GA</th>
+                        <th>ALLROUNDER F.C.</th>
+                        <th>Ligare Nakano Football Club</th>
+                        <th>ミナミダイFC</th>
+                        <th>Nakano City FC</th>
+                        <th>VAMOS</th>
+                        <th>フジシール</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="team-header">PW3</td>
+                        <td class="cell-blank">-</td>
+                        <td></td>
+                        <td></td>
+                        <td>● 1-4</td>
+                        <td>● 0-4</td>
+                        <td>○ 12-3</td>
+                        <td></td>
+                        <td>□(不戦) 5-0</td>
+                    </tr>
+                    <tr>
+                        <td class="team-header">GA</td>
+                        <td></td>
+                        <td class="cell-blank">-</td>
+                        <td>● 2-3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>○ 2-0</td>
+                        <td>○ 2-1</td>
+                    </tr>
+                    <tr>
+                        <td class="team-header">ALLROUNDER F.C.</td>
+                        <td></td>
+                        <td>○ 3-2</td>
+                        <td class="cell-blank">-</td>
+                        <td>○ 3-1</td>
+                        <td>■(不戦) 0-5</td>
+                        <td></td>
+                        <td>○ 2-0</td>
+                        <td>□(不戦) 5-0</td>
+                    </tr>
+                    <tr>
+                        <td class="team-header">Ligare Nakano Football Club</td>
+                        <td>○ 4-1</td>
+                        <td></td>
+                        <td>● 1-3</td>
+                        <td class="cell-blank">-</td>
+                        <td></td>
+                        <td>■(不戦) 0-5</td>
+                        <td>● 1-3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="team-header">ミナミダイFC</td>
+                        <td>○ 4-0</td>
+                        <td></td>
+                        <td>□(不戦) 5-0</td>
+                        <td></td>
+                        <td class="cell-blank">-</td>
+                        <td></td>
+                        <td>△ 1-1</td>
+                        <td>○ 11-0</td>
+                    </tr>
+                    <tr>
+                        <td class="team-header">Nakano City FC</td>
+                        <td>● 3-12</td>
+                        <td></td>
+                        <td></td>
+                        <td>□(不戦) 5-0</td>
+                        <td></td>
+                        <td class="cell-blank">-</td>
+                        <td>● 1-8</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="team-header">VAMOS</td>
+                        <td></td>
+                        <td>● 0-2</td>
+                        <td>● 0-2</td>
+                        <td>○ 3-1</td>
+                        <td>△ 1-1</td>
+                        <td>○ 8-1</td>
+                        <td class="cell-blank">-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="team-header">フジシール</td>
+                        <td>■(不戦) 0-5</td>
+                        <td>● 1-2</td>
+                        <td>■(不戦) 0-5</td>
+                        <td></td>
+                        <td>● 0-11</td>
+                        <td></td>
+                        <td></td>
+                        <td class="cell-blank">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
